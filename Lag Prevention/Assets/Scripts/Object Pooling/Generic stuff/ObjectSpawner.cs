@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour
 {
+    public ObjectPoolingGUI objectPoolingGUI;
     public IObjectPooling objectPooling;
     public int Amount;
     public Transform upperBoundary;
@@ -20,12 +21,15 @@ public class ObjectSpawner : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Alpha1)){
             objectPooling = ObjectPooling.instance;
+            objectPoolingGUI.ButtonClicked(1);
         }
         if(Input.GetKeyDown(KeyCode.Alpha2)){
             objectPooling = GetComponent<ObjectPoolingUnity>();
+            objectPoolingGUI.ButtonClicked(2);
         }
         if(Input.GetKeyDown(KeyCode.Alpha3)){
             objectPooling = GetComponent<NoObjectPooling>();
+            objectPoolingGUI.ButtonClicked(3);
         }
         if(Time.captureFramerate % 120 == 0 && objectPooling != null)
         {
